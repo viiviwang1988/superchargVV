@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>两年生物与基因学习进度</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero">
+        <img class="hero__image" src="assets/biology-roadmap-hero.png" alt="" />
+        <div class="hero__overlay"></div>
+        <div class="hero__content">
+          <nav class="top-nav" aria-label="页面导航">
+            <a class="top-nav__link is-active" href="index.html">进度追踪</a>
+            <a class="top-nav__link" href="knowledge.html">知识结构</a>
+            <a class="top-nav__link" href="resources.html">知识库</a>
+            <a class="top-nav__link" href="vocabulary.html">词汇库</a>
+            <a class="top-nav__link" href="notes.html">笔记上传</a>
+          </nav>
+          <p class="eyebrow">24个月路线图</p>
+          <h1>生物与基因学习进度</h1>
+          <p class="hero__copy">
+            从细胞、生化、DNA 到 CRISPR、精准医疗和生物信息学，把长期学习拆成可以看见的进步。
+          </p>
+          <div class="hero__actions">
+            <button class="button button--primary" id="focusToday" type="button">
+              <span aria-hidden="true">◎</span>
+              今日聚焦
+            </button>
+            <button class="button button--ghost" id="resetProgress" type="button">
+              <span aria-hidden="true">↺</span>
+              重置
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="summary" aria-label="学习进度概览">
+        <article class="metric">
+          <span class="metric__label">总进度</span>
+          <strong id="overallPercent">0%</strong>
+          <div class="bar"><span id="overallBar"></span></div>
+        </article>
+        <article class="metric">
+          <span class="metric__label">已完成月份</span>
+          <strong><span id="completedMonths">0</span>/24</strong>
+          <div class="metric__note" id="currentPhase">准备开始</div>
+        </article>
+        <article class="metric">
+          <span class="metric__label">累计学习时间</span>
+          <strong><span id="totalHours">0</span>h</strong>
+          <div class="metric__note">目标节奏：每周 5 小时</div>
+        </article>
+        <article class="metric metric--accent">
+          <span class="metric__label">下一步</span>
+          <strong id="nextMonth">月1</strong>
+          <div class="metric__note" id="nextTopic">细胞生物学</div>
+        </article>
+      </section>
+
+      <section class="planner">
+        <aside class="panel controls" aria-label="学习设置">
+          <div class="panel__header">
+            <h2>本周记录</h2>
+            <span class="pill">Week Log</span>
+          </div>
+          <label class="field">
+            <span>本周学习小时</span>
+            <input id="weekHours" min="0" max="40" step="0.5" type="number" value="0" />
+          </label>
+          <button class="button button--dark" id="saveHours" type="button">保存小时</button>
+          <div class="streak">
+            <span>节奏状态</span>
+            <strong id="paceStatus">尚未记录</strong>
+          </div>
+
+          <div class="panel__header panel__header--spaced">
+            <h2>筛选阶段</h2>
+          </div>
+          <div class="phase-tabs" id="phaseTabs" role="tablist" aria-label="阶段筛选"></div>
+        </aside>
+
+        <section class="roadmap" aria-label="学习路线">
+          <div class="roadmap__top">
+            <div>
+              <p class="eyebrow">Roadmap</p>
+              <h2>五阶段学习路线</h2>
+            </div>
+            <label class="search">
+              <span>搜索</span>
+              <input id="searchInput" type="search" placeholder="例如 CRISPR、免疫、RNA-seq" />
+            </label>
+          </div>
+          <div class="month-grid" id="monthGrid"></div>
+        </section>
+      </section>
+    </main>
+
+    <template id="monthTemplate">
+      <article class="month-card">
+        <div class="month-card__top">
+          <span class="month-card__badge"></span>
+          <label class="done-toggle">
+            <input class="month-complete" type="checkbox" />
+            <span>完成</span>
+          </label>
+        </div>
+        <h3></h3>
+        <p class="month-card__goal"></p>
+        <div class="chips"></div>
+        <div class="outputs"></div>
+        <label class="notes">
+          <span>笔记</span>
+          <textarea rows="3" placeholder="写下关键理解、疑问或论文链接"></textarea>
+        </label>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>

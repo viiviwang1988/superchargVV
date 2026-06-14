@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>生物与基因知识结构</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="knowledge-hero">
+        <nav class="top-nav top-nav--light" aria-label="页面导航">
+          <a class="top-nav__link" href="index.html">进度追踪</a>
+          <a class="top-nav__link is-active" href="knowledge.html">知识结构</a>
+          <a class="top-nav__link" href="resources.html">知识库</a>
+          <a class="top-nav__link" href="vocabulary.html">词汇库</a>
+          <a class="top-nav__link" href="notes.html">笔记上传</a>
+        </nav>
+        <div>
+          <p class="eyebrow">Knowledge Map</p>
+          <h1>把生命科学装进一张脑图</h1>
+          <p class="hero__copy">
+            这页把路线图改成“知识结构”：先看生命的层级，再看 DNA 如何变成蛋白质，最后看现代技术如何连接疾病、治疗和数据分析。
+          </p>
+        </div>
+      </section>
+
+      <section class="knowledge-layout">
+        <aside class="panel map-legend">
+          <div class="panel__header">
+            <h2>阅读顺序</h2>
+            <span class="pill">Map</span>
+          </div>
+          <ol class="legend-list">
+            <li><strong>结构层</strong><span>从化学到人体，建立生命的空间尺度。</span></li>
+            <li><strong>信息层</strong><span>从 DNA 到 RNA 到蛋白质，理解基因如何工作。</span></li>
+            <li><strong>变化层</strong><span>调控、进化、疾病解释生命为何不同。</span></li>
+            <li><strong>工程层</strong><span>测序、CRISPR、治疗和生信把知识变成工具。</span></li>
+          </ol>
+          <a class="button button--dark nav-button" href="resources.html">打开知识库</a>
+        </aside>
+
+        <section class="knowledge-main">
+          <section class="map-section">
+            <div class="roadmap__top">
+              <div>
+                <p class="eyebrow">Layer 1</p>
+                <h2>生命的层级</h2>
+              </div>
+              <span class="pill">化学 → 人体 → 群体</span>
+            </div>
+            <div class="layer-map" aria-label="生命科学层级图">
+              <div class="layer-node level-1">化学<span>原子、键、能量</span></div>
+              <div class="map-arrow">→</div>
+              <div class="layer-node level-2">分子<span>蛋白质、糖、脂质、ATP</span></div>
+              <div class="map-arrow">→</div>
+              <div class="layer-node level-3">细胞<span>膜、细胞器、分裂</span></div>
+              <div class="map-arrow">→</div>
+              <div class="layer-node level-4">组织 / 器官<span>免疫、神经、循环</span></div>
+              <div class="map-arrow">→</div>
+              <div class="layer-node level-5">人体 / 群体<span>疾病、进化、医学</span></div>
+            </div>
+          </section>
+
+          <section class="map-section">
+            <div class="roadmap__top">
+              <div>
+                <p class="eyebrow">Layer 2</p>
+                <h2>基因信息流</h2>
+              </div>
+              <span class="pill">中央法则</span>
+            </div>
+            <div class="central-dogma" aria-label="中央法则流程图">
+              <article class="dogma-card dna">
+                <span>01</span>
+                <h3>DNA</h3>
+                <p>长期存储生命信息：基因、染色体、突变都在这里。</p>
+              </article>
+              <div class="dogma-flow">转录</div>
+              <article class="dogma-card rna">
+                <span>02</span>
+                <h3>RNA</h3>
+                <p>把基因信息临时复制出来，参与表达和调控。</p>
+              </article>
+              <div class="dogma-flow">翻译</div>
+              <article class="dogma-card protein">
+                <span>03</span>
+                <h3>Protein</h3>
+                <p>蛋白质执行生命活动：酶、结构、信号、运输。</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="map-section">
+            <div class="roadmap__top">
+              <div>
+                <p class="eyebrow">Layer 3</p>
+                <h2>主题关系网络</h2>
+              </div>
+              <span class="pill">点击节点聚焦</span>
+            </div>
+            <div class="concept-board" id="conceptBoard" aria-label="生物与基因主题关系网络">
+              <button class="concept-node core is-selected" data-focus="gene">基因</button>
+              <button class="concept-node" data-focus="cell">细胞</button>
+              <button class="concept-node" data-focus="regulation">调控</button>
+              <button class="concept-node" data-focus="evolution">进化</button>
+              <button class="concept-node" data-focus="disease">疾病</button>
+              <button class="concept-node" data-focus="engineering">工程改造</button>
+              <button class="concept-node" data-focus="data">生物信息学</button>
+              <svg class="concept-lines" viewBox="0 0 900 420" aria-hidden="true">
+                <path d="M450 200 L180 105 L310 315 L450 200 L650 100 L725 320 L450 200 L660 225" />
+              </svg>
+            </div>
+            <article class="focus-card" id="focusCard">
+              <span class="pill">当前焦点</span>
+              <h3>基因</h3>
+              <p>基因是 DNA 上可被读取和调控的信息片段，是理解遗传、发育、疾病与基因技术的中心概念。</p>
+              <div class="chips">
+                <span class="chip">DNA</span>
+                <span class="chip">表达</span>
+                <span class="chip">突变</span>
+                <span class="chip">遗传</span>
+              </div>
+            </article>
+          </section>
+
+          <section class="knowledge-cards">
+            <article class="knowledge-card">
+              <span class="metric__label">用来解释</span>
+              <h3>为什么同一个 DNA 会长出不同器官？</h3>
+              <p>因为不同细胞开启了不同的基因表达程序，调控层决定哪些蛋白质被制造。</p>
+            </article>
+            <article class="knowledge-card">
+              <span class="metric__label">用来理解</span>
+              <h3>为什么疾病会遗传，也会演化？</h3>
+              <p>突变、选择压力、细胞克隆扩张和环境共同改变疾病风险与疾病进程。</p>
+            </article>
+            <article class="knowledge-card">
+              <span class="metric__label">用来实践</span>
+              <h3>为什么生物信息学适合你？</h3>
+              <p>现代生命科学把测序数据、统计建模、Python 分析和生物机制放在同一张桌上。</p>
+            </article>
+          </section>
+        </section>
+      </section>
+    </main>
+    <script src="knowledge.js"></script>
+  </body>
+</html>

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>生物与基因词汇库</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="vocab-hero">
+        <nav class="top-nav top-nav--light" aria-label="页面导航">
+          <a class="top-nav__link" href="index.html">进度追踪</a>
+          <a class="top-nav__link" href="knowledge.html">知识结构</a>
+          <a class="top-nav__link" href="resources.html">知识库</a>
+          <a class="top-nav__link is-active" href="vocabulary.html">词汇库</a>
+          <a class="top-nav__link" href="notes.html">笔记上传</a>
+        </nav>
+        <div class="resources-hero__grid">
+          <div>
+            <p class="eyebrow">Vocabulary Notebook</p>
+            <h1>基础概念中英文词汇库</h1>
+            <p class="english-line">Bilingual vocabulary notes for biology and genetics</p>
+            <p class="hero__copy">
+              把重要术语贴到这里，像笔记一样反复巩固：中文含义、英文术语、解释、阶段和掌握状态都放在同一页。
+            </p>
+            <p class="hero__copy hero__copy--en">
+              Save key terms here and review them as notes: Chinese meaning, English term, explanation, stage, and mastery status.
+            </p>
+          </div>
+          <div class="library-stats" aria-label="词汇统计">
+            <span><strong id="termCount">0</strong><em>词汇条目<br />Terms</em></span>
+            <span><strong id="knownCount">0</strong><em>已掌握<br />Known</em></span>
+            <span><strong id="reviewCount">0</strong><em>待复习<br />To review</em></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="vocab-layout">
+        <aside class="panel vocab-tools">
+          <div class="panel__header">
+            <h2>新增词语</h2>
+            <span class="pill">Notes</span>
+          </div>
+          <form class="term-form" id="termForm">
+            <label class="field">
+              <span>中文 / Chinese</span>
+              <input id="termZh" type="text" placeholder="例如 线粒体" required />
+            </label>
+            <label class="field">
+              <span>英文 / English</span>
+              <input id="termEn" type="text" placeholder="例如 mitochondrion" required />
+            </label>
+            <label class="field">
+              <span>阶段 / Stage</span>
+              <select id="termStage">
+                <option>第一阶段</option>
+                <option>第二阶段</option>
+                <option>第三阶段</option>
+                <option>第四阶段</option>
+                <option>第五阶段</option>
+              </select>
+            </label>
+            <label class="notes">
+              <span>解释 / Explanation</span>
+              <textarea id="termNote" rows="4" placeholder="写一句你自己的理解，也可以粘贴资料摘录"></textarea>
+            </label>
+            <button class="button button--dark" type="submit">保存词语 / Save term</button>
+          </form>
+          <button class="button button--subtle" id="loadDefaults" type="button">恢复内置词汇</button>
+        </aside>
+
+        <section class="vocab-main">
+          <div class="roadmap__top library-heading">
+            <div>
+              <p class="eyebrow">Review</p>
+              <h2>词汇笔记</h2>
+              <p class="section-subtitle">Vocabulary notes</p>
+            </div>
+            <label class="search vocab-search">
+              <span>搜索 / Search</span>
+              <input id="termSearch" type="search" placeholder="DNA、protein、细胞、mutation" />
+            </label>
+          </div>
+          <div class="phase-tabs vocab-tabs" id="vocabTabs" role="tablist" aria-label="词汇阶段筛选"></div>
+          <div class="alphabet-index" id="alphabetIndex" aria-label="A-Z 词汇索引"></div>
+          <div class="term-grid" id="termGrid"></div>
+        </section>
+      </section>
+    </main>
+
+    <template id="termTemplate">
+      <article class="term-card">
+        <div class="term-card__top">
+          <span class="term-stage"></span>
+          <button class="term-delete" type="button" aria-label="删除词语">×</button>
+        </div>
+        <h3></h3>
+        <div class="term-pronunciation">
+          <p class="term-en"></p>
+          <button class="speak-button" type="button" aria-label="打开标准英文发音">▶ 标准发音</button>
+        </div>
+        <p class="term-note"></p>
+        <label class="term-personal-note">
+          <span>我的理解 / My note</span>
+          <textarea rows="3" placeholder="写下你的联想、例句、易混点或自己的解释"></textarea>
+        </label>
+        <div class="term-actions">
+          <button class="status-button" data-status="review" type="button">待复习 / Review</button>
+          <button class="status-button" data-status="learning" type="button">学习中 / Learning</button>
+          <button class="status-button" data-status="known" type="button">已掌握 / Known</button>
+        </div>
+      </article>
+    </template>
+
+    <script src="vocabulary.js"></script>
+  </body>
+</html>

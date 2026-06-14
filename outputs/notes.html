@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>学习笔记上传</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="notes-hero">
+        <nav class="top-nav top-nav--light" aria-label="页面导航">
+          <a class="top-nav__link" href="index.html">进度追踪</a>
+          <a class="top-nav__link" href="knowledge.html">知识结构</a>
+          <a class="top-nav__link" href="resources.html">知识库</a>
+          <a class="top-nav__link" href="vocabulary.html">词汇库</a>
+          <a class="top-nav__link is-active" href="notes.html">笔记上传</a>
+        </nav>
+        <div class="resources-hero__grid">
+          <div>
+            <p class="eyebrow">GoodNotes Archive</p>
+            <h1>把 iPad 笔记放进学习路线里</h1>
+            <p class="english-line">Upload and organize your GoodNotes study notes</p>
+            <p class="hero__copy">
+              从 GoodNotes 导出 PDF 或图片，上传到这里，按阶段、月份和主题保存。你的文件会留在这个浏览器本地。
+            </p>
+            <p class="hero__copy hero__copy--en">
+              Export PDFs or images from GoodNotes, then save them here by stage, month, and topic.
+            </p>
+          </div>
+          <div class="library-stats" aria-label="笔记统计">
+            <span><strong id="noteCount">0</strong><em>笔记文件<br />Notes</em></span>
+            <span><strong id="pdfCount">0</strong><em>PDF<br />PDF files</em></span>
+            <span><strong id="imageCount">0</strong><em>图片<br />Images</em></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="notes-layout">
+        <aside class="panel notes-uploader">
+          <div class="panel__header">
+            <h2>上传笔记</h2>
+            <span class="pill">Upload</span>
+          </div>
+          <form class="term-form" id="noteForm">
+            <label class="upload-zone" for="noteFile">
+              <span>选择 GoodNotes 导出的 PDF 或图片</span>
+              <em>Choose a PDF or image exported from GoodNotes</em>
+              <input id="noteFile" type="file" accept=".pdf,image/*" required />
+            </label>
+            <label class="field">
+              <span>标题 / Title</span>
+              <input id="noteTitle" type="text" placeholder="例如 月5 中央法则课堂笔记" />
+            </label>
+            <label class="field">
+              <span>阶段 / Stage</span>
+              <select id="noteStage">
+                <option>第一阶段</option>
+                <option>第二阶段</option>
+                <option>第三阶段</option>
+                <option>第四阶段</option>
+                <option>第五阶段</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>月份 / Month</span>
+              <select id="noteMonth"></select>
+            </label>
+            <label class="field">
+              <span>关键词 / Tags</span>
+              <input id="noteTags" type="text" placeholder="DNA, transcription, 中央法则" />
+            </label>
+            <label class="notes">
+              <span>备注 / Comment</span>
+              <textarea id="noteComment" rows="4" placeholder="这份笔记解决了什么问题？下次复习重点是什么？"></textarea>
+            </label>
+            <button class="button button--dark" type="submit">保存笔记 / Save note</button>
+          </form>
+          <div class="local-note">
+            <strong>隐私说明 / Privacy</strong>
+            <p>这是本地网页，没有服务器上传。文件保存在当前浏览器的本地数据库中。</p>
+            <p class="english-line">Files are stored locally in this browser, not uploaded to a server.</p>
+          </div>
+        </aside>
+
+        <section class="notes-main">
+          <div class="roadmap__top library-heading">
+            <div>
+              <p class="eyebrow">Archive</p>
+              <h2>我的学习笔记</h2>
+              <p class="section-subtitle">My study notes</p>
+            </div>
+            <label class="search vocab-search">
+              <span>搜索 / Search</span>
+              <input id="noteSearch" type="search" placeholder="CRISPR、DNA、month 5、transcription" />
+            </label>
+          </div>
+          <div class="phase-tabs vocab-tabs" id="noteTabs" role="tablist" aria-label="笔记阶段筛选"></div>
+          <div class="note-grid" id="noteGrid"></div>
+        </section>
+      </section>
+    </main>
+
+    <template id="noteTemplate">
+      <article class="note-card">
+        <div class="note-card__top">
+          <span class="note-stage"></span>
+          <button class="term-delete note-delete" type="button" aria-label="删除笔记">×</button>
+        </div>
+        <div class="note-preview"></div>
+        <h3></h3>
+        <p class="note-meta"></p>
+        <p class="note-comment"></p>
+        <div class="chips note-tags"></div>
+        <a class="button button--dark nav-button note-open" href="#" target="_blank" rel="noreferrer">打开笔记 / Open</a>
+      </article>
+    </template>
+
+    <script src="notes.js"></script>
+  </body>
+</html>
